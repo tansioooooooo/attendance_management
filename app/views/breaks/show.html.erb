@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @break.user_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @break.date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @break.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @break.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_break_path(@break) %> |
+<%= link_to 'Back', breaks_path %>
