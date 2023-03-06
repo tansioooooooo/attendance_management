@@ -6,4 +6,7 @@ class Break
   field :date, type: Date
   field :start_time, type: Time
   field :end_time, type: Time
+
+  belongs_to :user
+  belongs_to :work
 end

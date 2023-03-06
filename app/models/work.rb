@@ -8,4 +8,6 @@ class Work
   field :abcent, type: Mongoid::Boolean
   field :create_at, type: datetime
   field :update_at, type: datetime
+
+  belongs_to :user
 end
