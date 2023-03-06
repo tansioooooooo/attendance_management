@@ -6,4 +6,6 @@ class Work
   field :start_time, type: Time
   field :end_time, type: Time
   field :abcent, type: Mongoid::Boolean
+  field :create_at, type: datetime
+  field :update_at, type: datetime
 end
