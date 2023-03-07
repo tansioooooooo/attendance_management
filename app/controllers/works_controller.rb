@@ -26,10 +26,8 @@ class WorksController < ApplicationController
     respond_to do |format|
       if @work.save
         format.html { redirect_to work_url(@work), notice: "Work was successfully created." }
-        format.json { render :show, status: :created, location: @work }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +37,8 @@ class WorksController < ApplicationController
     respond_to do |format|
       if @work.update(work_params)
         format.html { redirect_to work_url(@work), notice: "Work was successfully updated." }
-        format.json { render :show, status: :ok, location: @work }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end
   end
