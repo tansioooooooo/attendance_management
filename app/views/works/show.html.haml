@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @work.user_id
+%p
+  %strong Date:
+  = @work.date
+%p
+  %strong Start time:
+  = @work.start_time
+%p
+  %strong End time:
+  = @work.end_time
+%p
+  %strong Abcent:
+  = @work.abcent
+= link_to 'Edit', edit_work_path(@work)
+|
+= link_to 'Back', works_path

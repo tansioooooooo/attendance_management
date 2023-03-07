@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @break.user_id
+%p
+  %strong Date:
+  = @break.date
+%p
+  %strong Start time:
+  = @break.start_time
+%p
+  %strong End time:
+  = @break.end_time
+= link_to 'Edit', edit_break_path(@break)
+|
+= link_to 'Back', breaks_path

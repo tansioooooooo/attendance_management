@@ -35,6 +35,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'erb2haml'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
@@ -54,3 +55,4 @@ gem 'mongoid'
 gem 'devise'
 gem 'dotenv'
 gem "tailwindcss-rails", "~> 2.0"
+gem "haml-rails"

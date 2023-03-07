@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Breaks
+%table
+  %thead
+    %tr
+      %th User
+      %th Date
+      %th Start time
+      %th End time
+      %th{:colspan => "3"}
+  %tbody
+    - @breaks.each do |break|
+    %tr
+      %td= break.user_id
+      %td= break.date
+      %td= break.start_time
+      %td= break.end_time
+      %td= link_to 'Show', break
+      %td= link_to 'Edit', edit_break_path(break)
+      %td= link_to 'Destroy', break, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Break', new_break_path

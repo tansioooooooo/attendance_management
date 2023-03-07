@@ -26,10 +26,8 @@ class BreaksController < ApplicationController
     respond_to do |format|
       if @break.save
         format.html { redirect_to break_url(@break), notice: "Break was successfully created." }
-        format.json { render :show, status: :created, location: @break }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @break.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +37,8 @@ class BreaksController < ApplicationController
     respond_to do |format|
       if @break.update(break_params)
         format.html { redirect_to break_url(@break), notice: "Break was successfully updated." }
-        format.json { render :show, status: :ok, location: @break }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @break.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +49,6 @@ class BreaksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to breaks_url, notice: "Break was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
