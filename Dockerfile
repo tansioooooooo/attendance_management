@@ -18,9 +18,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get instal
 # install yarn
 RUN npm install --global yarn
 
-COPY Gemfile Gemfile.lock /app/
-ENV BUNDLE_APP_CONFIG=.bundle BUNDLE_PATH=/bundle
-RUN bundler version && bundle install --path=/bundle --jobs=4 && bundle exec rails webpacker:install && bundle exec rails webpacker:compile 
+# gem
+COPY Gemfile* /app/
+RUN bundle install
 
 COPY . /app/
 
