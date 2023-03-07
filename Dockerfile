@@ -1,28 +1,11 @@
 FROM ruby:3.1.2
-
+RUN apt-get update -qq && apt-get install -y nodejs yarnpkg
+RUN ln -s /usr/bin/yarnpkg /usr/bin/yarn
 WORKDIR /app
-
-RUN apt-get update -y -qq && \
-    apt-get install -y -qq \
-      curl \
-      git-core \
-      build-essential \
-      libmagickwand-dev \
-      nodejs \
-      && \
-    rm -rf /var/lib/apt/lists/*
-
-# install nodejs(LTS)
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
-
-# install yarn
-RUN npm install --global yarn
-
-# gem
-COPY Gemfile* /app/
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
-
-COPY . /app/
+COPY . /app
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
