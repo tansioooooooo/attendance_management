@@ -15,6 +15,8 @@ class User
   field :reset_password_sent_at, type: Time
 
   ## Rememberable
+  field :remember_created_at, type: Time
+
   field :create_at, type: Time
   field :update_at, type: Time
 
