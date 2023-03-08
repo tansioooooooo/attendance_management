@@ -1,0 +1,10 @@
+- if user_signed_in?
+  .row
+    %aside.col-md-3
+      %section.user_info
+        = render 'shared/user_info'
+    .col-md-9
+      %h3 本日の勤怠状況
+      = render 'shared/work'
+- else
+  = link_to "サインアップ", new_user_registration, class: "btn btn-lg btn-primary"
