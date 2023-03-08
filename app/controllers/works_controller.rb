@@ -22,10 +22,10 @@ class WorksController < ApplicationController
   # POST /works or /works.json
   def create
     @work = Work.new(work_params)
-
+    @work.user = current_user
     respond_to do |format|
       if @work.save
-        format.html { redirect_to work_url(@work), notice: "Work was successfully created." }
+        format.html { redirect_to edit_work_url(@work), notice: "勤怠を登録しました。" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,7 +36,7 @@ class WorksController < ApplicationController
   def update
     respond_to do |format|
       if @work.update(work_params)
-        format.html { redirect_to work_url(@work), notice: "Work was successfully updated." }
+        format.html { redirect_to edit_work_url(@work), notice: "勤怠を更新しました。" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -48,7 +48,7 @@ class WorksController < ApplicationController
     @work.destroy
 
     respond_to do |format|
-      format.html { redirect_to works_url, notice: "Work was successfully destroyed." }
+      format.html { redirect_to works_url, notice: "勤怠を削除しました。" }
       format.json { head :no_content }
     end
   end
@@ -61,6 +61,6 @@ class WorksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_params
-      params.require(:work).permit(:user_id, :date, :start_time, :end_time, :abcent)
+      params.require(:work).permit(:user_id, :date, :start_time, :end_time)
     end
 end
