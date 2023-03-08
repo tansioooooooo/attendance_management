@@ -5,6 +5,22 @@
         = render 'shared/user_info'
     .col-md-9
       %h3 本日の勤怠状況
-      = render 'shared/work'
+      - if(@works.nil?)
+        %h4 未登録
+      - else
+        %table.table
+          %thead
+            %tr
+              %th{:scope => "col"} 日付
+              %th{:scope => "col"} 業務開始時刻
+              %th{:scope => "col"} 業務終了時刻
+          %tbody
+            %tr
+              %td= @work.date
+              %td= @work.start_time
+              %td= @work.end_time
 - else
-  = link_to "サインアップ", new_user_registration, class: "btn btn-lg btn-primary"
+  .center.jumbotron
+    %h1 勤怠システム
+    %h2 アカウントの作成はこちらから。
+    = link_to "アカウントの登録", new_user_registration_url, class: "btn btn-lg btn-primary"
