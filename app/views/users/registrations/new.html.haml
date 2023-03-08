@@ -1,32 +1,14 @@
-.box1
-  .box-inner
+%h1 アカウントの作成
+.row
+  .col-md-6
     = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
       = render "devise/shared/error_messages", resource: resource
-      %h1 新規登録
-      .box-name
-        = f.label :name, "名前"
-        %br/
-        = f.text_field :name, autofocus: true
-      .box-email
-        = f.label :email, "Eメール"
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
-      .box-password
-        = f.label :password, "パスワード"
-        - if @minimum_password_length
-          %em
-            (#{@minimum_password_length} characters minimum)
-        %br/
-        = f.password_field :password, autocomplete: "new-password"
-      .box-password
-        = f.label :password_confirmation, "パスワード(確認)"
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "new-password"
-      .box-login
-        = f.submit "新規登録"
-    .box-newusr
-      %p
-        %span ------------
-        既に登録されていますか？
-        %span ------------
-      = link_to "ログイン", new_user_session_path
+      = f.label :name, "名前"
+      = f.text_field :name, autofocus: true, class: 'form-control'
+      = f.label :email, "メールアドレス"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+      = f.label :password, "パスワード"
+      = f.password_field :password, autocomplete: "new-password", class:'form-control'
+      = f.label :password_confirmation, "パスワード(確認)"
+      = f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control'
+      = f.submit "アカウントの登録", class: "btn btn-primary"

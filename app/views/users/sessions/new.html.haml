@@ -1,21 +1,11 @@
-.box2
-  .box-inner
+%h1 ログイン
+.row
+  .col-md-6.col-md-offset-3
     = form_with model: @user, url: user_session_path, local: true do |f|
-      %h1 ログイン
-      .box-email
-        = f.label :email, "Eメール"
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
-      .box-password
-        .a-row
-          .column-left
-            = f.label :password, "パスワード"
-        = f.password_field :password, autocomplete: "current-password"
-      .box-login
-        = f.submit "ログイン"
-    .box-newusr
-      %p
-        %span ------------
-        新しいお客様ですか？
-        %span ------------
-      = link_to "新規登録", new_user_registration_path
+      = f.label :email, "メールアドレス"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+      = f.label :password, "パスワード"
+      = f.password_field :password, autocomplete: "current-password", class: 'form-control'
+      = f.submit "ログイン", class: "btn btn-primary"
+    %p
+      新規登録するには#{link_to "アカウントの作成", new_user_registration_path}へ
