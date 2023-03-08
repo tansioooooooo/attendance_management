@@ -5,7 +5,10 @@ class Work
   field :date, type: Date
   field :start_time, type: Time
   field :end_time, type: Time
-  field :abcent, type: Mongoid::Boolean
 
   belongs_to :user
+
+  def today_work
+    where(date:Time.zone.today.to_s, user_id: current_user.id).first
+  end
 end

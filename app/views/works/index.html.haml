@@ -1,24 +1,18 @@
 %p#notice= notice
 %h1 Works
-%table
+%table.table
   %thead
     %tr
-      %th User
-      %th Date
-      %th Start time
-      %th End time
-      %th Abcent
-      %th{:colspan => "3"}
+      %th{:scope => "col"} 日付
+      %th{:scope => "col"} 業務開始時刻
+      %th{:scope => "col"} 業務終了時刻
+      %th{:colspan => "2"}
   %tbody
     - @works.each do |work|
       %tr
-        %td= work.user_id
         %td= work.date
         %td= work.start_time
         %td= work.end_time
-        %td= work.abcent
-        %td= link_to 'Show', work
-        %td= link_to 'Edit', edit_work_path(work)
-        %td= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to '編集', edit_work_path(work)
+        %td= link_to '削除', work, method: :delete, data: { confirm: '削除してよろしいですか?' }
 %br/
-= link_to 'New Work', new_work_path
