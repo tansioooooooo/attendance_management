@@ -1,9 +1,13 @@
 class WorksController < ApplicationController
   before_action :set_work, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /works or /works.json
   def index
-    @works = Work.all
+    @date = params[:month] ? DateTime.new(params[:year].to_i, params[:month].to_i) : DateTime.current
+    first_date_of_month = @date.beginning_of_month
+    last_date_of_month = @date.end_of_month
+    @works = Work.where(user_id: current_user.id, date: first_date_of_month..last_date_of_month ).order(date: :asc)
   end
 
   # GET /works/1 or /works/1.json

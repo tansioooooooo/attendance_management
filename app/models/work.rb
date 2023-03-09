@@ -7,8 +7,4 @@ class Work
   field :end_time, type: Time
 
   belongs_to :user
-
-  def today_work
-    where(date:Time.zone.today.to_s, user_id: current_user.id).first
-  end
 end

@@ -1,5 +1,8 @@
 %p#notice= notice
-%h1 Works
+%h1 #{@date.strftime("%Y年%m月")} 勤務表
+
+%h2.text-left= link_to '前月', works_path(year: @date.last_month.year, month: @date.last_month.mon), class: "col-md-6"
+%h2.text-right= link_to '来月', works_path(year: @date.next_month.year, month: @date.next_month.mon), class: "col-md-6"
 %table.table
   %thead
     %tr
@@ -11,8 +14,7 @@
     - @works.each do |work|
       %tr
         %td= work.date
-        %td= work.start_time
-        %td= work.end_time
+        %td= work.start_time.strftime("%H時%M分")
+        %td= work.end_time.strftime("%H時%M分")
         %td= link_to '編集', edit_work_path(work)
         %td= link_to '削除', work, method: :delete, data: { confirm: '削除してよろしいですか?' }
-%br/
