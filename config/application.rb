@@ -14,10 +14,13 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require 'i18n/backend/fallbacks'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks) 
 
 module AttendanceManagement
   class Application < Rails::Application
@@ -25,7 +28,7 @@ module AttendanceManagement
     config.load_defaults 6.1
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.fallbacks = { 'ja' => 'en' }
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
