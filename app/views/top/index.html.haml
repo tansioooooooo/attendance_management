@@ -1,24 +1,9 @@
 - if user_signed_in?
   .row
-    %aside.col-md-3
+    %aside.col-md-9
       %section.user_info
         = render 'shared/user_info'
-    .col-md-9
-      %h3 本日の勤怠状況
-      - if(@works.nil?)
-        %h4 未登録
-      - else
-        %table.table
-          %thead
-            %tr
-              %th{:scope => "col"} 日付
-              %th{:scope => "col"} 業務開始時刻
-              %th{:scope => "col"} 業務終了時刻
-          %tbody
-            %tr
-              %td= @work.date
-              %td= @work.start_time
-              %td= @work.end_time
+
 - else
   .center.jumbotron
     %h1 勤怠システム
